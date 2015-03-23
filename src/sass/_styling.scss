@@ -5,6 +5,7 @@ body {
 	font-family: $baseFontFamily;
 	font-weight: 300;
 	font-size: 16px;
+	background: #eee;
 }
 a {
 	text-decoration: none;
@@ -20,7 +21,7 @@ dd {margin: 0;}
 /***** /Base *****/
 
 /***** Typography *****/
-h1,h2,h3 {font-weight: normal;}
+h1,h2,h3 {font-weight: normal; color: $baseTextColor;}
 h1 {
 	font-family: $headingsFontFamily;
 	font-weight: 300;
@@ -34,8 +35,8 @@ h1 {
 		position: absolute;
 		left: 50%;
 		margin-left: -25px;
-		margin-top: -12px;
-		@include transition(all ease-in-out 150ms);
+		margin-top: 0;
+		@include transition(all ease-out 150ms);
 	}
 
 	&:hover {
@@ -46,7 +47,9 @@ h1 {
 		}
 	}
 }
-h1 em {font-family: $altFontFamily; display: block; font-size: 2em; margin-bottom: .5em;}
+h1 em,
+h2 em,
+h3 em {font-family: $altFontFamily; display: block; font-size: 2em; margin-bottom: .5em;}
 
 address {
 	font-style: normal;
@@ -54,6 +57,23 @@ address {
 
 p {
 	line-height: 1.5;
+}
+
+.round {
+	border-radius: 50%;
+	border: 0 solid $white;
+	border-width: 3px 9px 15px 9px;
+}
+
+.grayscale {
+	filter: gray;
+	-webkit-filter: grayscale(1);
+	@include transition(all ease-out 150ms);
+
+	&:hover {
+		filter: none;
+		-webkit-filter: none;
+	}
 }
 
 .text-left {text-align: left;}
@@ -83,6 +103,122 @@ section {height: 100%; padding: 5%; position: relative;}
 
 #home {}
 
+#cases {
+	background: #fff;
+	border: 1px solid #ddd;
+	border-left: none;
+	border-right: none;
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: inline-block;
+			padding: 2rem;
+			cursor: pointer;
+			@include transition(all ease-out 150ms);
+
+			img {
+				width: 10rem;
+				height: 10rem;
+			}
+
+			&.toggled {
+				transform: scale(1.2);
+				img {
+					filter: none;
+					-webkit-filter: none;
+				}
+			}
+		}
+
+		&.toggled {
+			li:not(.toggled) {
+				transform: scale(0.9);
+
+				&:hover {
+					transform: scale(1);
+				}
+			}
+		}
+
+		&.cases {
+			white-space: pre-line;
+
+			li {
+				@include transition(all ease-out 400ms);
+				img {
+					@include transition(all ease-out 400ms);
+					left: auto;
+					top: auto;
+				}
+
+				h3 {
+					@include transition(all ease-out 400ms);
+				}
+
+				.description {
+					display: none;
+				}
+
+				&.toggled {
+					position: relative;
+					padding-left: 22rem;
+					text-align: left;
+					min-height: 400px;
+
+					img {
+						position: absolute;
+						left: 0;
+						top: 2em;
+						border-radius: none;
+						width: 20rem;
+						height: 20rem;
+					}
+
+					h3 {
+						font-weight: bold;
+						font-size: 2em;
+						margin: 0;
+					}
+
+					.description {
+						display: block;
+
+						p {
+							margin: 0;
+						}
+					}
+				}
+			}
+
+			&.toggled {
+				li:not(.toggled) {
+					display: none;
+					transform: scale(0);
+				}
+			}
+		}
+	}
+}
+
+#contact {
+	background: #555;
+	color: #fff;
+
+	h2 {
+		color: lighten($baseTextColor, 30%);
+	}
+
+	a {
+		&:hover {
+			color: #fff;
+		}
+	}
+}
+
 /***** /Sections *****/
 
 /***** Modules *****/
@@ -102,7 +238,11 @@ section {height: 100%; padding: 5%; position: relative;}
 }
 
 @media (min-width: 768px) {
-	h1 {font-size: 1.6em;}
+	h1 {font-size: 1.6em;
+		&:after {
+			margin-top: -12px;
+		}
+	}
 
 	.container {
 		width: 90%;

@@ -36,7 +36,7 @@ gulp.task('libs', function() {
 // Postprocess our CSS
 gulp.task('autoprefixer', ['sass'], function() {
     return gulp.src('./dist/css/default.css')
-        .pipe(autoprefixer())
+        .pipe(autoprefixer('last 4 versions'))
         .pipe(gulp.dest('./dist/css'));
 });
 
@@ -67,7 +67,7 @@ gulp.task('sass', function() {
 
 // Move gfx
 gulp.task('gfx', function() {
-    return gulp.src('./src/gfx/*')
+    return gulp.src(['./src/gfx/*','./src/gfx/**/*'])
         .pipe(gulp.dest('./dist/css/gfx'));
 });
 

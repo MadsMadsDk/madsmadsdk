@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="madsmadsdk">
 <head>
 <meta charset="utf-8">
 <meta name="google-site-verification" content="nkRAFx-YlkoJfEX8PSdo8qjbWcbUiUcWr1KGcVpVHRc" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>Mads Østergaard - Frontend Developer</title>
+<style>
+	[ng-cloak] {
+		display: none;
+	}
+</style>
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,600">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="dist/css/default.css" />
@@ -20,16 +25,50 @@
 <section id="home">
 	<div class="container text-center">
 		<h1>
-      <em>Mads Ulsø Østergaard
-      </em>
+      <em>Mads Ulsø Østergaard</em>
     </h1>
     <h2>Frontendudvikler &amp; Webkonsulent</h2>
-    <address>
-      <p>Saltholmsgade 1, 1.<br>8000 Aarhus C</p><p><a href="tel:+4522558600">+45 2255 8600</a> //
-      <a href="mailto:hello@madsmads.dk">hello@madsmads.dk</a></p>
-    </address>
-    <p><a href="//twitter.com/madsmadsdk" target="_blank"><i class="fa fa-twitter"></i> @madsmadsdk</a> // <a href="//www.linkedin.com/in/madsmadsdk"><i class="fa fa-linkedin"></i> madsmadsdk</a></p>
-    <p><a href="//github.com/MadsMadsDK" target="_blank"><i class="fa fa-github"></i> MadsMadsDK</a></p>
+		<picture>
+			<source srcset="dist/css/gfx/mads.jpg 1x, dist/css/gfx/mads-2x.jpg 2x" alt="Mads Ulsø Østergaard" />
+			<img class="round lazyload grayscale" src="dist/css/gfx/mads.jpg" alt="Mads Ulsø Østergaard" />
+		</picture>
+	</div>
+</section>
+
+<section id="cases" ng-controller="caseController">
+	<div class="container text-center">
+		<h2><em>Evner</em>Vælg en teknologi, for at filtrere cases</h2>
+		<ul ng-class="{'toggled':someToggled}" ng-cloak>
+			<li ng-repeat="s in skills" ng-click="toggle(s)" ng-class="{'toggled':s.toggled}">
+				<img class="lazyload grayscale" ng-src="{{s.emblem}}" alt="{{s.skill}}" />
+				<p>{{s.skill}}</p>
+			</li>
+		</ul>
+		<h3><em>Cases</em></h3>
+		<ul ng-class="{'toggled':someCaseToggled}" class="cases">
+			<li ng-repeat="c in filteredCases" ng-click="toggleCase(c)" ng-class="{'toggled':c.toggled}">
+				<img class="lazyload grayscale" ng-class="{'round':c.toggled == false}" ng-src="{{c.images[0]}}" alt="MadRouletten" />
+				<h3>{{c.client}}</h3>
+				<div class="description">
+					<p>{{c.body}}</p>
+					<a class="btn" ng-href="{{c.link}}" target="_blank">
+						{{c.cta}}
+					</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<section id="contact">
+	<div class="container text-center">
+		<h2><em>Find eller fang mig her</em></h2>
+		<address>
+			<p>Saltholmsgade 1, 1.<br>8000 Aarhus C</p><p><a href="tel:+4522558600">+45 2255 8600</a> //
+			<a href="mailto:hello@madsmads.dk">hello@madsmads.dk</a></p>
+		</address>
+		<p><a href="//twitter.com/madsmadsdk" target="_blank"><i class="fa fa-twitter"></i> @madsmadsdk</a> // <a href="//www.linkedin.com/in/madsmadsdk"><i class="fa fa-linkedin"></i> madsmadsdk</a></p>
+		<p><a href="//github.com/MadsMadsDK" target="_blank"><i class="fa fa-github"></i> MadsMadsDK</a></p>
 	</div>
 </section>
 

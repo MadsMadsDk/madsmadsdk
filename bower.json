@@ -1,0 +1,22 @@
+{
+  "name": "MadsMadsDK",
+  "version": "0.0.0",
+  "authors": [
+    "Mads Ulsø Østergaard <mads@madsmads.dk>"
+  ],
+  "license": "MIT",
+  "homepage": "http://madsmads.dk",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "respimage": "~1.3.0",
+    "lazysizes": "~1.0.1",
+    "jquery.scrollTo": "~2.1.0"
+  }
+}

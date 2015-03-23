@@ -1,0 +1,126 @@
+/***** Base *****/
+
+body {
+	color: $baseTextColor;
+	font-family: $baseFontFamily;
+	font-weight: 300;
+	font-size: 16px;
+}
+a {
+	text-decoration: none;
+	color: lighten($baseTextColor, 30%);
+	border-bottom: dotted 1px lighten($baseTextColor, 30%);
+	@include transition(all ease-out 150ms);
+}
+a:hover {
+	border-color: transparent;
+	color: $linkColor;
+}
+dd {margin: 0;}
+/***** /Base *****/
+
+/***** Typography *****/
+h1,h2,h3 {font-weight: normal;}
+h1 {
+	font-family: $headingsFontFamily;
+	font-weight: 300;
+	font-size: 1em;
+
+	&:after {
+		height: 1px;
+		width: 50px;
+		background: $linkColor;
+		content: "";
+		position: absolute;
+		left: 50%;
+		margin-left: -25px;
+		margin-top: -12px;
+		@include transition(all ease-in-out 150ms);
+	}
+
+	&:hover {
+
+		&:after {
+			width: 100px;
+			margin-left: -50px;
+		}
+	}
+}
+h1 em {font-family: $altFontFamily; display: block; font-size: 2em; margin-bottom: .5em;}
+
+address {
+	font-style: normal;
+}
+
+p {
+	line-height: 1.5;
+}
+
+.text-left {text-align: left;}
+.text-center {text-align: center;}
+.text-right {text-align: right;}
+
+/***** /Typography *****/
+
+/***** Navigation *****/
+
+
+/***** /Navigation *****/
+
+/***** Structure *****/
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+
+/***** /Structure *****/
+
+/***** Sections *****/
+
+section {height: 100%; padding: 5%; position: relative;}
+
+#home {}
+
+/***** /Sections *****/
+
+/***** Modules *****/
+
+
+/***** /Modules *****/
+
+/***** Responsive *****/
+
+@media (max-width: 479px) {
+
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+	h1 {font-size: 1.2em;}
+
+}
+
+@media (min-width: 768px) {
+	h1 {font-size: 1.6em;}
+
+	.container {
+		width: 90%;
+		margin: 0 auto;
+	}
+
+}
+
+@media (min-width: 1024px) {
+
+
+}
+
+@media (min-width: 1170px) {
+
+
+}
+
+/***** /Responsive *****/
+
+@import "responsive-utilities";
